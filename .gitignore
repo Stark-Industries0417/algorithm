@@ -1,1 +1,13 @@
 .ipynb_checkpoints
+
+# IDE
+.idea/
+*.iml
+
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+venv/
