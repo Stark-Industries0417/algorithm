@@ -1,0 +1,91 @@
+# ===== Build Output =====
+build/
+out/
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# ===== Gradle =====
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+.gradletasknamecache
+gradle/wrapper/gradle-wrapper.properties
+# Gradle 빌드 캐시
+.gradle/*
+!.gradle/buildOutputCleanup/
+
+# ===== IntelliJ IDEA =====
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+atlassian-ide-plugin.xml
+.idea/replstate.xml
+.idea/httpRequests
+.idea/dataSources/
+.idea/dataSources.ids
+.idea/dataSources.local.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/dictionaries
+.idea/libraries
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/modules.xml
+.idea/*.iml
+.idea/kotlinc.xml
+.idea/migrations.xml
+.idea/caches/
+
+# ===== Kotlin =====
+.kotlin/
+kotlin-js-store/
+
+# ===== VS Code =====
+.vscode/
+.settings/
+.project
+.classpath
+
+# ===== macOS =====
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# ===== Algorithm Specific =====
+# 테스트 입력/출력 파일
+*.in
+*.out
+test_cases/
+input.txt
+output.txt
+expected.txt
+
+# 개인 메모나 풀이 노트
+*.memo
+*.note
+personal_notes/
+
+# 실행 파일
+Main
+Solution
+*.exe
+
+# ===== Package Files =====
+*.7z
+*.dmg
+*.gz
+*.iso
+*.rar
+*.tar
+*.zip
