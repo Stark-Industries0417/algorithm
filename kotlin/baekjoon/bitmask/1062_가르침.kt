@@ -1,6 +1,4 @@
-package baekjoon
-
-import kotlin.math.max
+package baekjoon.bitmask
 
 fun main() {
     val (n, k) = readln().split(" ").map { it.toInt() }
@@ -45,4 +43,6 @@ fun main() {
     backtrack(essential, 0, 5)
     println(maxCount)
 }
+
+
 

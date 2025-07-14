@@ -1,4 +1,4 @@
-package baekjoon
+package baekjoon.bitmask
 
 fun main() {
     val n = readln().toInt()
