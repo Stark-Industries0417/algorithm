@@ -31,6 +31,13 @@ fun main() {
             return
         }
 
+        if (idx >= 26 || (26 - idx) < k - count) return
+
+        if (mask shl (1 shl idx) != 0) {
+            go(mask, idx + 1, count)
+            return
+        }
+
         go(mask or (1 shl idx), idx + 1, count + 1)
         go(mask, idx + 1, count)
     }
