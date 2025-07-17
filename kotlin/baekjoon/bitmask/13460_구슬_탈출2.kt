@@ -1,6 +1,7 @@
 package baekjoon.bitmask
 
 import java.util.LinkedList
+import kotlin.math.abs
 
 
 fun main() {
@@ -41,18 +42,29 @@ fun main() {
 
             while (board[nrx + dx[dir]][nrx + dy[dir]] != '#') {
                 nrx += dx[dir]; nry += dy[dir]
-                if (board[nrx][nry] == '.') break
+                if (board[nrx][nry] == 'o') break
             }
             while (board[nbx + dx[dir]][nby + dy[dir]] != '#') {
                 nbx += dx[dir]; nby += dy[dir]
-                if (board[nbx][nby] == '.') break
+                if (board[nbx][nby] == 'o') break
             }
 
-            if (board[nrx][nry] == '0') {
+            val redDist = abs(nrx - current.redX + nry - current.redY)
+            val blueDist = abs(nbx - current.blueX + nby - current.blueY)
+
+            if (redDist > blueDist) {
+                nrx -= dx[dir]; nry -= dy[dir]
+            } else {
+                nbx -= dx[dir]; nby -= dy[dir]
+            }
+
+            if (board[nbx][nby] == 'o') continue
+            if (board[nrx][nry] == 'o') {
                 println(current.count + 1)
                 return
             }
-            if (board[nbx][nby] == '0') continue
+
+            queue.offer(State(nrx, nry, nbx, nby, current.count + 1))
         }
     }
 
