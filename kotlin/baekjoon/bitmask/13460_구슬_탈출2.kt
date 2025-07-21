@@ -34,40 +34,48 @@ fun main() {
     while (queue.isNotEmpty()) {
         val current = queue.poll()
 
+        if (current.count >= 10)
+            continue
+
         for (dir in 0 until 4) {
             var nrx = current.redX
             var nry = current.redY
             var nbx = current.blueX
             var nby = current.blueY
 
-            while (board[nrx + dx[dir]][nrx + dy[dir]] != '#') {
+            while (board[nrx + dx[dir]][nry + dy[dir]] != '#') {
                 nrx += dx[dir]; nry += dy[dir]
-                if (board[nrx][nry] == 'o') break
+                if (board[nrx][nry] == 'O') break
             }
             while (board[nbx + dx[dir]][nby + dy[dir]] != '#') {
                 nbx += dx[dir]; nby += dy[dir]
-                if (board[nbx][nby] == 'o') break
+                if (board[nbx][nby] == 'O') break
             }
 
-            val redDist = abs(nrx - current.redX + nry - current.redY)
-            val blueDist = abs(nbx - current.blueX + nby - current.blueY)
+            if (nrx == nbx && nry == nby && board[nrx][nry] != 'O') {
+                val redDist = abs(nrx - current.redX) + abs(nry - current.redY)
+                val blueDist = abs(nbx - current.blueX) + abs(nby - current.blueY)
 
-            if (redDist > blueDist) {
-                nrx -= dx[dir]; nry -= dy[dir]
-            } else {
-                nbx -= dx[dir]; nby -= dy[dir]
+                if (redDist > blueDist) {
+                    nrx -= dx[dir]; nry -= dy[dir]
+                } else {
+                    nbx -= dx[dir]; nby -= dy[dir]
+                }
             }
 
-            if (board[nbx][nby] == 'o') continue
-            if (board[nrx][nry] == 'o') {
+            if (board[nbx][nby] == 'O') continue
+            if (board[nrx][nry] == 'O') {
                 println(current.count + 1)
                 return
             }
 
+            if ("${nrx},${nry},${nbx},${nby}" in visited) continue
+            visited.add("$nrx,$nry,$nbx,$nby")
             queue.offer(State(nrx, nry, nbx, nby, current.count + 1))
         }
     }
 
+    println(-1)
 }
 
 data class State(
