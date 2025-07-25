@@ -38,13 +38,13 @@ fun generatePermutations(
     op: List<String>,
     onResult: (String) -> Unit
 ) {
+    if (current.size >= 2 && !isValidSequence(op, current)) return
+
     if (current.size == numbers.size) {
         val result = current.joinToString("")
         onResult(result)
         return
     }
-
-    if (current.size >= 2 && !isValidSequence(op, current)) return
 
     for (i in numbers.indices) {
         if (used[i]) continue
