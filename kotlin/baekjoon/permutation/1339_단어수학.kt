@@ -1,13 +1,31 @@
 package permutation
 
+import kotlin.math.max
+
 fun main() {
     val n = readln().toInt()
     val words = List(n) { readln() }
-    val nums = MutableList(n) { 9 - it }
-
-    do {
-        words.forEach { word ->
-            word.map { it - 'A' }
+    val totalLength = words.fold(0) { acc, word -> acc + word.length }
+    val nums = MutableList(totalLength) { 9 - it }
+    val alphaNum = mutableMapOf<Char, Char>()
+    val alpabet = words.flatMap { it.asIterable() }.toSet()
+    var ans = -1
+    while (true) {
+        alpabet.forEachIndexed { idx, char ->
+            alphaNum[char] = nums[idx].digitToChar()
+        }
+        var temp = 0
+        for (word in words) {
+            var num = ""
+            for (c in word) {
+                num += alphaNum[c]
+            }
+            temp += num.toInt()
+        }
+        ans = max(temp, ans)
+        if (!beforePermutation(nums)) {
+            println(ans)
+            return
         }
     }
 }
@@ -23,7 +41,7 @@ fun beforePermutation(nums: MutableList<Int>): Boolean {
 
     j = nums.size - 1
     while (i < j) {
-        nums[i] = nums[j].also { nums[j] = nums[j] }
+        nums[i] = nums[j].also { nums[j] = nums[i] }
         i++
         j--
     }
