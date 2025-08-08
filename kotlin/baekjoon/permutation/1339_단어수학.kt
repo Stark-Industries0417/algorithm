@@ -1,49 +1,33 @@
 package permutation
 
-import kotlin.math.max
+import java.lang.Math.pow
+import kotlin.math.pow
+
 
 fun main() {
     val n = readln().toInt()
     val words = List(n) { readln() }
-    val totalLength = words.fold(0) { acc, word -> acc + word.length }
-    val nums = MutableList(totalLength) { 9 - it }
-    val alphaNum = mutableMapOf<Char, Char>()
-    val alpabet = words.flatMap { it.asIterable() }.toSet()
-    var ans = -1
-    while (true) {
-        alpabet.forEachIndexed { idx, char ->
-            alphaNum[char] = nums[idx].digitToChar()
-        }
-        var temp = 0
-        for (word in words) {
-            var num = ""
-            for (c in word) {
-                num += alphaNum[c]
-            }
-            temp += num.toInt()
-        }
-        ans = max(temp, ans)
-        if (!beforePermutation(nums)) {
-            println(ans)
-            return
+    val weights = mutableMapOf<Char, Int>()
+    words.forEach { word ->
+        word.forEachIndexed { index, c ->
+            val charWeights = 10.0.pow((word.length - index - 1).toDouble())
+            weights[c] = weights.getOrDefault(c, 0) + charWeights.toInt()
         }
     }
-}
+    var temp = 0
+    val nums = mutableMapOf<Char, Int>()
+    weights.entries.sortedByDescending { it.value }
+        .forEachIndexed { index, entry ->
+            nums[entry.key] = 9 - index
+        }
 
-fun beforePermutation(nums: MutableList<Int>): Boolean {
-    var i = nums.size - 1
-    while (i > 0 && nums[i] >= nums[i - 1]) i--
-    if (i <= 0) return false
-
-    var j = nums.size - 1
-    while (nums[j] >= nums[i - 1]) j--
-    nums[i - 1] = nums[j].also { nums[j] = nums[i - 1] }
-
-    j = nums.size - 1
-    while (i < j) {
-        nums[i] = nums[j].also { nums[j] = nums[i] }
-        i++
-        j--
+    words.forEach { word ->
+        var num = ""
+        word.forEach { c ->
+           num += nums[c]
+        }
+        temp += num.toInt()
     }
-    return true
+
+    println(temp)
 }
