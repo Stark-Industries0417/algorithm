@@ -1,6 +1,5 @@
 package permutation
 
-import java.lang.Math.pow
 import kotlin.math.pow
 
 
@@ -14,20 +13,11 @@ fun main() {
             weights[c] = weights.getOrDefault(c, 0) + charWeights.toInt()
         }
     }
-    var temp = 0
-    val nums = mutableMapOf<Char, Int>()
-    weights.entries.sortedByDescending { it.value }
-        .forEachIndexed { index, entry ->
-            nums[entry.key] = 9 - index
+    var total = 0; var pow = 9
+    weights.values.sortedByDescending { it }
+        .forEach {
+             total += pow * it
+            pow -= 1
         }
-
-    words.forEach { word ->
-        var num = ""
-        word.forEach { c ->
-           num += nums[c]
-        }
-        temp += num.toInt()
-    }
-
-    println(temp)
+    println(total)
 }
