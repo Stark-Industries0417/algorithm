@@ -30,7 +30,7 @@ fun main() {
     println(ans)
 }
 
-fun calculateTeamAbility(team: List<Int>, graph: List<List<Int>>): Int {
+private fun calculateTeamAbility(team: List<Int>, graph: List<List<Int>>): Int {
     var total = 0
     for (i in team.indices) {
         for (j in team.indices) {
