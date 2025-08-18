@@ -1,33 +1,29 @@
 package recursion
 
 fun main() {
-    var first = true
-
     while (true) {
         val input = readln().split(" ").map { it.toInt() }
         val k = input[0]
-
+        val s = input.subList(1, input.size)
         if (k == 0) break
 
-        if (!first) {
-            println()
-        }
-        first = false
-
-        val s = input.subList(1, input.size)
-        s.printCombinations(0, 0, IntArray(6))
+        s.printLottoNumbers(0, k,BooleanArray(s.size), 0,mutableListOf())
+        println()
     }
 }
 
-private fun List<Int>.printCombinations(idx: Int, selected: Int, temp: IntArray) {
-    if (selected == 6) {
+private fun List<Int>.printLottoNumbers(idx: Int, k: Int, check: BooleanArray, start: Int, temp: MutableList<Int>) {
+    if (idx == 6) {
         println(temp.joinToString(" "))
         return
     }
 
-    if (idx >= this.size) return
-
-    temp[selected] = this[idx]
-    printCombinations(idx + 1, selected + 1, temp)
-    printCombinations(idx + 1, selected, temp)
+    for (i in start until k) {
+        if (check[i]) continue
+        check[i] = true
+        temp.add(this[i])
+        printLottoNumbers(idx + 1, k, check, i + 1, temp)
+        check[i] = false
+        temp.removeLast()
+    }
 }
