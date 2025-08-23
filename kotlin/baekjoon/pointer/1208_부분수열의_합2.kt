@@ -4,7 +4,7 @@ fun main() {
     val (n, m) = readln().split(" ").map { it.toInt() }
     val arr = readln().split(" ").map { it.toInt() }
     val mid = n / 2
-    var count = 0
+    var count = 0L  // ⭐ Long 타입으로 변경!
 
     val left = arr.slice(0 until mid)
     val right = arr.slice(mid until n)
@@ -12,32 +12,39 @@ fun main() {
 
     for (leftSum in left.getAllSubsetSum()) {
         val target = m - leftSum
-        if (rightSums.binarySearch(target)) {
-            count++
-        }
+        count += rightSums.binarySearch(target).toLong()  // ⭐ toLong() 추가
     }
 
+    if (m == 0) count--
     println(count)
 }
 
-private fun List<Int>.binarySearch(target: Int): Boolean {
-    var left = 0
-    var right = size
-
-    while (left < right) {
-        val mid = (left + right) / 2
-        if (this[mid] >= target) {
-            right = mid
-        } else {
-            left = mid + 1
+private fun List<Int>.binarySearch(target: Int): Int {
+    fun upperbound(): Int {
+        var left = 0; var right = size
+        while (left < right) {
+            val mid = (left + right) / 2
+            if (this[mid] > target) right = mid
+            else left = mid + 1
         }
+        return left
     }
-    return if (target == this[left]) true else false
+
+    fun lowerbound(): Int {
+        var left = 0; var right = size
+        while (left < right) {
+            val mid = (left + right) / 2
+            if (this[mid] >= target) right = mid
+            else left = mid + 1
+        }
+        return left
+    }
+    return upperbound() - lowerbound()
 }
 
-private fun List<Int>.getAllSubsetSum(): Set<Int> {
-    val subSetSum = mutableSetOf<Int>()
-    for (i in 1 until (1 shl size)) {
+private fun List<Int>.getAllSubsetSum(): List<Int> {
+    val subSetSum = mutableListOf<Int>()
+    for (i in 0 until (1 shl size)) {
         var sum = 0
         for (j in 0 until size) {
             if (i and (1 shl j) != 0) sum += this[j]
