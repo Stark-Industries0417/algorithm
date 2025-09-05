@@ -27,4 +27,4 @@
 | 2025.08.27 | [부분수열의 합](https://www.acmicpc.net/problem/1182)    | S2  | 브루트포스   | ✅      |
 | 2025.08.30 | [연산자 끼워넣기](https://www.acmicpc.net/problem/14888)  | S1  | 백트래킹    | ✅      |
 | 2025.09.01 | [연산자 끼워넣기2](https://www.acmicpc.net/problem/15658) | S2  | 백트래킹    | ✅      |
-| 2025.09.01 | [테트로미노](https://www.acmicpc.net/problem/14500)     | G4  | 재귀      | ⏳      |
+| 2025.09.01 | [테트로미노](https://www.acmicpc.net/problem/14500)     | G4  | 재귀      | ✅      |
