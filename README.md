@@ -29,3 +29,4 @@
 | 2025.09.01 | [연산자 끼워넣기2](https://www.acmicpc.net/problem/15658) | S2  | 백트래킹    | ✅      |
 | 2025.09.01 | [테트로미노](https://www.acmicpc.net/problem/14500)    | G4  | 재귀      | ✅      |
 | 2025.09.06 | [두 동전](https://www.acmicpc.net/problem/16197)     | G4  | 재귀      | ⏳      |
+| 2025.09.08 | [두 동전](https://www.acmicpc.net/problem/16197)     | G4  | 재귀      | ✅      |

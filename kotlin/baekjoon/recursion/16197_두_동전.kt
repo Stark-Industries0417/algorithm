@@ -8,65 +8,66 @@ fun main() {
 
     val dx = intArrayOf(0, 0, 1, -1)
     val dy = intArrayOf(1, -1, 0, 0)
-    lateinit var coin1: Point; lateinit var coin2: Point
+
+    lateinit var coin1: Point
+    lateinit var coin2: Point
     var findFirst = false
+
     for (i in 0 until n) {
         for (j in 0 until m) {
-            if (board[i][j] == 'o')
+            if (board[i][j] == 'o') {
                 if (!findFirst) {
                     coin1 = Point(i, j)
                     findFirst = true
+                } else {
+                    coin2 = Point(i, j)
                 }
-                else coin2 = Point(i, j)
             }
+        }
     }
 
-    fun dfs(count: Int, coin1: Point, coin2: Point, visited: Array<BooleanArray>): Int {
-        var ans = Integer.MAX_VALUE
-        if (count == 10) {
+    fun dfs(count: Int, coin1: Point, coin2: Point): Int {
+        if (count >= 10) {
             return -1
         }
 
+        var ans = Integer.MAX_VALUE
+
         for (i in 0 until 4) {
             val dir = Point(dx[i], dy[i])
-            val nextCoin1 = coin1 + dir
-            val nextCoin2 = coin2 + dir
-            if (nextCoin1.isThrow(n, m) && nextCoin2.isThrow(n, m)) continue
+            var nextCoin1 = coin1 + dir
+            var nextCoin2 = coin2 + dir
 
-            if (nextCoin1.isThrow(n, m) && !nextCoin2.isThrow(n, m)) return count + 1
-            if (!nextCoin1.isThrow(n, m) && nextCoin2.isThrow(n, m)) return count + 1
+            if (nextCoin1.isOut(n, m) && nextCoin2.isOut(n, m))
+                continue
+            if (nextCoin1.isOut(n, m) || nextCoin2.isOut(n, m))
+                return count + 1
 
-            if (board[nextCoin1.x][nextCoin1.y] != '#' && board[nextCoin2.x][nextCoin2.y] != '#') {
-                visited[nextCoin1.x][nextCoin1.y] = true
-                ans = maxOf(ans, dfs(count + 1, nextCoin1, nextCoin2, visited))
-                visited[nextCoin1.x][nextCoin1.y] = false
+            if (board[nextCoin1.x][nextCoin1.y] == '#') {
+                nextCoin1 = coin1
+            }
+            if (board[nextCoin2.x][nextCoin2.y] == '#') {
+                nextCoin2 = coin2
             }
 
-            if (board[nextCoin1.x][nextCoin1.y] != '#') {
-                visited[nextCoin1.x][nextCoin1.y] = true
-                ans = minOf(ans, dfs(count + 1, nextCoin1, coin2, visited))
-                visited[nextCoin1.x][nextCoin1.y] = false
-            }
-            if (board[nextCoin2.x][nextCoin2.y] != '#') {
-                visited[nextCoin1.x][nextCoin1.y] = true
-                ans = minOf(ans, dfs(count + 1, coin1, nextCoin2, visited))
-                visited[nextCoin1.x][nextCoin1.y] = false
+            if (nextCoin1 != nextCoin2 && (nextCoin1 != coin1 || nextCoin2 != coin2)) {
+                val result = dfs(count + 1, nextCoin1, nextCoin2)
+                if (result != -1) {
+                    ans = minOf(ans, result)
+                }
             }
         }
-        return ans
+        return if (ans == Integer.MAX_VALUE) -1 else ans
     }
 
-    println(dfs(0, coin1, coin2, Array(n) { BooleanArray(m) { false } }))
+    val result = dfs(0, coin1, coin2)
+    println(result)
 }
 
-private data class Point(var x: Int, var y: Int) {
+private data class Point(val x: Int, val y: Int) {
     operator fun plus(other: Point) = Point(x + other.x, y + other.y)
-    operator fun minusAssign(other: Point) {
-        this.x -= other.x
-        this.y -= other.y
-    }
 
-    fun isThrow(n: Int, m: Int): Boolean {
+    fun isOut(n: Int, m: Int): Boolean {
         return x < 0 || x >= n || y < 0 || y >= m
     }
 }
