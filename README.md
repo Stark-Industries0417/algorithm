@@ -31,4 +31,5 @@
 | 2025.09.06 | [두 동전](https://www.acmicpc.net/problem/16197)      | G4  | 재귀      | ⏳     |
 | 2025.09.08 | [두 동전](https://www.acmicpc.net/problem/16197)      | G4  | 재귀      | ✅     |
 | 2025.09.09 | [에너지 모으기](https://www.acmicpc.net/problem/16198)   | S1  | 재귀      | ✅     |
-| 2025.09.11 | [N-Queen](https://www.acmicpc.net/problem/9663)    | G4  | 재귀      |   ⏳    |
+| 2025.09.11 | [N-Queen](https://www.acmicpc.net/problem/9663)    | G4  | 재귀      |   ⏳   |
+| 2025.09.16  | [N-Queen](https://www.acmicpc.net/problem/9663)    | G4  | 재귀      |   ✅    |

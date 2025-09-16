@@ -4,42 +4,32 @@ import kotlin.math.abs
 
 fun main() {
     val n = readln().toInt()
-    val visited = BooleanArray(n * n) { false }
+    val cols = IntArray(n) { -1 }
     var count = 0
 
-    fun go(idx: Int, queen: Int) {
-        if (idx == (n*n - 1)) {
-            if (queen == 0) count++
-            return
+    fun isSafe(row: Int, col: Int): Boolean {
+        for (i in 0 until row) {
+            if (cols[i] == col) return false
+            if (abs(i - row) == abs(cols[i] - col)) return false
         }
-
-        if (!check(n, idx, visited)) {
-            go(idx + 1, queen)
-            return
-        }
-
-        visited[idx] = true
-        go(idx + 1, queen - 1)
-        visited[idx] = false
-        go (idx + 1, queen)
+        return true
     }
 
-    go(0, n)
+    fun go(row: Int) {
+        if (row == n) {
+            count++
+            return
+        }
+
+        for (col in 0 until n) {
+            if (isSafe(row, col)) {
+                cols[row] = col
+                go(row + 1)
+                cols[row] = -1
+            }
+        }
+    }
+
+    go(0)
     println(count)
-}
-
-private fun check(n: Int, idx: Int, visited: BooleanArray): Boolean {
-    visited.forEachIndexed { i, visited ->
-        if (visited) {
-            val x = i / n
-            val y = i % n
-
-            val myX = idx / n
-            val myY = idx % n
-            if (x == myX || y == myY) return false
-            if (x + y == myX + myY) return false
-            if (abs(x - y) == abs(myX - myY)) return false
-        }
-    }
-    return true
 }
