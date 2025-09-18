@@ -6,7 +6,7 @@ fun main() {
         readln().split(" ").map { it.toInt() }.toIntArray()
     }
 
-    fun select(idx: Int) {
+    fun select(idx: Int): Boolean {
         if (idx == n * n) {
             for (i in 0 until n) {
                 for (j in 0 until n) {
@@ -15,33 +15,48 @@ fun main() {
                 println()
             }
             println()
-            return
+            return true
         }
 
         if (sudoku[idx / n][idx % n] != 0)
-            select(idx + 1)
+            return select(idx + 1)
         else {
-            for (i in 1..n) {
-                if (i !in sudoku[idx / n] && sudoku.colFilter(idx, i) && i !in sudoku.check3x3(idx)) {
-                    sudoku[idx / n][idx % n] = i
-                    select(idx + 1)
+            for (choice in 1..n) {
+                if (sudoku.rowOrColValid(idx, choice) && sudoku.check3x3(idx, choice)) {
+                    sudoku[idx / n][idx % n] = choice
+                    if (select(idx + 1)) return true
                     sudoku[idx / n][idx % n] = 0
                 }
             }
         }
+        return false
     }
+
+    select(0)
 }
 
-private fun Array<IntArray>.colFilter(idx: Int, i: Int): Boolean {
+private fun Array<IntArray>.rowOrColValid(idx: Int, i: Int): Boolean {
     val x = idx / 9; val y = idx % 9
-    val set = mutableSetOf<Int>()
+    val rows = mutableSetOf<Int>()
+    val cols = mutableSetOf<Int>()
+
     for (j in 0 until 9) {
-        set.add(this[x][j])
+        rows.add(this[x][j])
     }
-    return i in set
+    for (i in 0 until 9) {
+        cols.add(this[i][y])
+    }
+    return i !in rows && i !in cols
 }
 
-private fun Array<IntArray>.check3x3(idx: Int): List<Int> {
-    val x = idx / 3; val y = idx % 3
-
+private fun Array<IntArray>.check3x3(idx: Int, choice: Int): Boolean {
+    val x = idx / 9; val y = idx % 9
+    val startX = (x / 3) * 3; val startY = (y / 3) * 3
+    val list = mutableListOf<Int>()
+    for (i in startX until startX + 3) {
+        for (j in startY until startY + 3) {
+            list.add(this[i][j])
+        }
+    }
+    return choice !in list
 }
