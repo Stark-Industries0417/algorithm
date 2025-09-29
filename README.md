@@ -37,3 +37,4 @@
 | 2025.09.17 | [스도쿠](https://www.acmicpc.net/problem/2580)        | G4  | 재귀       |   ✅   |
 | 2025.09.26 | [이동하기](https://www.acmicpc.net/problem/11048)      | S2  | DP        |   ⏳   |
 | 2025.09.29 | [이동하기](https://www.acmicpc.net/problem/11048)      | S2  | DP        |   ✅    |
+| 2025.09.29 | [점프점프](https://www.acmicpc.net/problem/11060)      | S2  | DP        |   ✅    |
