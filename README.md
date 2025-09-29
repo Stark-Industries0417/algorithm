@@ -34,5 +34,6 @@
 | 2025.09.11 | [N-Queen](https://www.acmicpc.net/problem/9663)    | G4  | 재귀       |   ⏳   |
 | 2025.09.16 | [N-Queen](https://www.acmicpc.net/problem/9663)    | G4  | 재귀       |   ✅   |
 | 2025.09.17 | [스도쿠](https://www.acmicpc.net/problem/2580)        | G4  | 재귀       |   ⏳   |
-| 2025.09.17 | [스도쿠](https://www.acmicpc.net/problem/2580)        | G4  | 재귀       |   ✅    |
-| 2025.09.26 | [이동하기](https://www.acmicpc.net/problem/11048)      | S2  | DP        |   ⏳    |
+| 2025.09.17 | [스도쿠](https://www.acmicpc.net/problem/2580)        | G4  | 재귀       |   ✅   |
+| 2025.09.26 | [이동하기](https://www.acmicpc.net/problem/11048)      | S2  | DP        |   ⏳   |
+| 2025.09.29 | [이동하기](https://www.acmicpc.net/problem/11048)      | S2  | DP        |   ✅    |
