@@ -39,3 +39,4 @@
 | 2025.09.29 | [이동하기](https://www.acmicpc.net/problem/11048)      | S2  | DP        |   ✅    |
 | 2025.09.29 | [점프점프](https://www.acmicpc.net/problem/11060)      | S2  | DP        |   ✅    |
 | 2025.10.04  | [팰린드롬?](https://www.acmicpc.net/problem/10942)     | G4  | DP        |   ✅    |
+| 2025.10.04  | [1,2,3 더하기](https://www.acmicpc.net/problem/9095)  | S4  | DP        |   ✅    |
