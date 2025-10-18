@@ -36,10 +36,11 @@
 | 2025.09.17 | [스도쿠](https://www.acmicpc.net/problem/2580)           | G4  | 재귀       |   ⏳   |
 | 2025.09.17 | [스도쿠](https://www.acmicpc.net/problem/2580)           | G4  | 재귀       |   ✅   |
 | 2025.09.26 | [이동하기](https://www.acmicpc.net/problem/11048)         | S2  | DP        |   ⏳   |
-| 2025.09.29 | [이동하기](https://www.acmicpc.net/problem/11048)         | S2  | DP        |   ✅    |
-| 2025.09.29 | [점프점프](https://www.acmicpc.net/problem/11060)         | S2  | DP        |   ✅    |
-| 2025.10.04 | [팰린드롬?](https://www.acmicpc.net/problem/10942)        | G4  | DP        |   ✅    |
-| 2025.10.04 | [1,2,3 더하기](https://www.acmicpc.net/problem/9095)     | S4  | DP        |   ✅    |
-| 2025.10.10 | [1,2,3 더하기 4](https://www.acmicpc.net/problem/15989)  | G5  | DP        |   ✅    |
-| 2025.10.11 | [파일 합치기](https://www.acmicpc.net/problem/11066)       | G3  | DP        |   ✅    |
-| 2025.10.13 | [파일 합치기](https://www.acmicpc.net/problem/11066) 재귀 풀이 | G3  | DP        |   ✅    |
+| 2025.09.29 | [이동하기](https://www.acmicpc.net/problem/11048)         | S2  | DP        |   ✅   |
+| 2025.09.29 | [점프점프](https://www.acmicpc.net/problem/11060)         | S2  | DP        |   ✅   |
+| 2025.10.04 | [팰린드롬?](https://www.acmicpc.net/problem/10942)        | G4  | DP        |   ✅   |
+| 2025.10.04 | [1,2,3 더하기](https://www.acmicpc.net/problem/9095)     | S4  | DP        |   ✅   |
+| 2025.10.10 | [1,2,3 더하기 4](https://www.acmicpc.net/problem/15989)  | G5  | DP        |   ✅   |
+| 2025.10.11 | [파일 합치기](https://www.acmicpc.net/problem/11066)       | G3  | DP        |   ✅   |
+| 2025.10.13 | [파일 합치기](https://www.acmicpc.net/problem/11066) 재귀 풀이 | G3  | DP        |   ✅   |
+| 2025.10.18 | [평범한 배낭](https://www.acmicpc.net/problem/12865) dp 풀이 | G5  | DP        |   ⏳    |
