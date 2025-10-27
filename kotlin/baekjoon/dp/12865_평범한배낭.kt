@@ -7,38 +7,22 @@ fun main() {
 	val br = BufferedReader(InputStreamReader(System.`in`))
 	val (n, k) = br.readLine().split(" ").map { it.toInt() }
 
-	val dp = Array(n) { IntArray(n) { 0 } }
-	val things = mutableListOf<Pair<Int, Int>>()
-	repeat(n) {
-		val (a, b) = br.readLine().split(" ").map { it.toInt() }
-		things.add(Pair(a, b))
+	val dp = Array(n + 1) { IntArray(k + 1) { 0 } }
+	val things = Array(n + 1) { Pair(0, 0) }
+	for (i in 1 .. n) {
+		val (w, v) = br.readLine().split(" ").map { it.toInt() }
+		things[i] = Pair(w, v)
 	}
 
-	for (i in 0 until n) {
-		dp[i][i] = things[i].second
-	}
-
-	fun solution(start: Int, end: Int): Int {
-		if (dp[start][end] != 0) return dp[start][end]
-		if (dp[start][end] == -1) return 0
-
-		if (start == end) return things[start].let {
-			dp[start][end] = if (it.first > k) -1 else it.second
-			dp[start][end]
+	for (i in 1 .. n) {
+		for (w in 1 .. k) {
+			if (things[i].first > w) {
+				dp[i][w] = dp[i - 1][w]
+			} else {
+				dp[i][w] = maxOf(dp[i - 1][w], dp[i - 1][w - things[i].first] + things[i].second)
+			}
 		}
-
-		var ans = Int.MIN_VALUE
-		for (i in start until end) {
-			val temp = solution(start, i) + solution(i + 1, end)
-			val weight = things.slice(start..end).sumOf { it.first }
-			if (weight > k) continue
-			if (temp > ans) ans = temp
-		}
-		dp[start][end] = ans
-		return ans
 	}
 
-	solution(0, n - 1)
-
-	println(dp.maxOf { it.max() })
+	println(dp[n][k])
 }
