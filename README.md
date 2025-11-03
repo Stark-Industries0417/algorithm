@@ -45,3 +45,4 @@
 | 2025.10.13 | [파일 합치기](https://www.acmicpc.net/problem/11066) 재귀 풀이 | G3  | DP        | ✅      |
 | 2025.10.18 | [평범한 배낭](https://www.acmicpc.net/problem/12865) dp 풀이 | G5  | DP        | ⏳      |
 | 2025.10.27 | [평범한 배낭](https://www.acmicpc.net/problem/12865) dp 풀이 | G5  | DP        | ✅      |
+| 2025.11.03 | [기타리스트](https://www.acmicpc.net/problem/1495) dp 풀이   | S1  | DP        | ✅      |
