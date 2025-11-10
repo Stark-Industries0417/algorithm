@@ -46,3 +46,4 @@
 | 2025.10.18 | [평범한 배낭](https://www.acmicpc.net/problem/12865) dp 풀이 | G5  | DP        | ⏳      |
 | 2025.10.27 | [평범한 배낭](https://www.acmicpc.net/problem/12865) dp 풀이 | G5  | DP        | ✅      |
 | 2025.11.03 | [기타리스트](https://www.acmicpc.net/problem/1495) dp 풀이   | S1  | DP        | ✅      |
+| 2025.11.10  | [뮤탈리스트](https://www.acmicpc.net/problem/12869) dp 풀이  | G4  | DP        | ✅      |
