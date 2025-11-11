@@ -21,7 +21,7 @@ fun main() {
 
 }
 
-fun check(nums: List<Int>, op: List<String>): Boolean {
+private fun check(nums: List<Int>, op: List<String>): Boolean {
     for (i in 0 until op.size) {
         if (op[i] == "<" && nums[i] > nums[i + 1]) return false
         if (op[i] == ">" && nums[i] < nums[i + 1]) return false
@@ -30,7 +30,7 @@ fun check(nums: List<Int>, op: List<String>): Boolean {
 }
 
 
-fun nextPermutation(nums: MutableList<Int>): Boolean {
+private fun nextPermutation(nums: MutableList<Int>): Boolean {
     var i = nums.size - 1
     while (i > 0 && nums[i - 1] >= nums[i]) i--
     if (i <= 0) return false
@@ -48,7 +48,7 @@ fun nextPermutation(nums: MutableList<Int>): Boolean {
     return true
 }
 
-fun prevPermutation(nums: MutableList<Int>): Boolean {
+private fun prevPermutation(nums: MutableList<Int>): Boolean {
     var i = nums.size - 1
     while (i > 0 && nums[i - 1] <= nums[i]) i--
     if (i <= 0) return false
